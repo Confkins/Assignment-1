@@ -1,0 +1,24 @@
+Connor Duignan DT228/2
+C14452482 OOP Assignment 1
+
+I have a main program file along with 5 separate classes (With Data() as a superclass and the graphs as sub-classes).
+
+The main() file simply calls classes, class methods, and deals with user input.
+
+In the Data() class, I read in two set of data I got from the world data repository which I modified myself to work with processing. 
+I read these files into arrays which I then sorted alphabetically. (For neatness' sake). The arrays are then separated into two,
+a string array and a float array. In this class are several sorting methods used by the various graphs
+
+In the Graph() class, I draw four line graphs based off the two data sets: Bottom ten, and top ten countries.
+This class also holds methods for drawing points and displaying relavent data when a mouse is hoveringover it.
+
+In the Full_trend() class, I draw three graphs: Murder rate trend, GDP trend, and an overlap of the two.
+This class utilises the entire dataset.
+
+In the Bar_graph() Class, I draw two bar graphs with the data, Similar to the Full_Trend Graph.
+
+The Menu() class simply draws the menu. 
+
+Included with the assignment files are the two data files, my initial readme file and this explanation text.
+
+I hoope this is okay, thanks for reading!

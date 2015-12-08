@@ -11,12 +11,7 @@ class Data
       String gdp_nations[] = new String[153];
       String murder_nations[] = new String[153];
       //note to self: clean this up a bit. Jesus Christ...
-      
-      Data(String gdp_data[],String murder_data[])
-      {
-        gdp_data = loadStrings("gdp_data.csv");
-        murder_data = loadStrings("murder_data.csv");
-      }
+   
   //////////////////////////////////////////////////////////////////    
       Data()
       {
@@ -62,24 +57,10 @@ class Data
           gdp_numbers[j] = Float.parseFloat(gdp[i+1]);
           j++;
          
-        }
-        
-        
+        }        
       }
-/////////////////////////////////////////////////////////////////      
-      void print_data()
-      {
-        /*for(int i =0; i < gdp_nations.length; i ++)
-        {
-          println(gdp_nations[i]);
-          println(gdp_numbers[i]);
-        }*/
-        for(int i =0; i < murder_nations.length; i ++)
-        {
-          //println(murder_nations[i]);
-          println(murder_numbers[i]);
-        }
-      }
+////////////////////////////////////////////////////////////////////////      
+
       void data_sort()
       {
          int j;
@@ -119,7 +100,7 @@ class Data
               } 
          }
       }
-      void anti_data_sort()
+      void anti_data_sort()//sorts opposite to data_sort();
       {
          int j;
          boolean death = true; 
@@ -131,7 +112,7 @@ class Data
          {
              taxes = false;
              death = false;
-              for( j=0;  j > gdp_numbers.length -1;  j++ )
+              for( j=0;  j < gdp_numbers.length -1;  j++ )
               {
                    if ( gdp_numbers[ j ] < gdp_numbers[j+1] )
                    {
@@ -142,7 +123,7 @@ class Data
                            temp_string = gdp_nations[ j ];
                            gdp_nations[ j ] = gdp_nations[ j+1 ];
                            gdp_nations[ j+1 ] =  temp_string;
-                           taxes = true;              
+                           taxes = true;            
                    } 
                    if ( murder_numbers[ j ] < murder_numbers[j+1] )
                    {
@@ -153,13 +134,13 @@ class Data
                            temp_string = murder_nations[ j ];
                            murder_nations[ j ] = murder_nations[ j+1 ];
                            murder_nations[ j+1 ] =  temp_string;
-                           death = true;              
+                           death = true;            
                    }
               } 
          }
       }
       void simul_data_sort()
-      {
+       {
          int j;
          boolean death = true; 
          boolean taxes = true;
@@ -196,4 +177,3 @@ class Data
          }
       }
 }
-

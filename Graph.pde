@@ -27,6 +27,7 @@ class Graph extends Data
    
   void line_graph_draw()
  {  
+   //graph.data_sort();
    k = 0;
    j = 1;
    stroke(255);
@@ -44,7 +45,6 @@ class Graph extends Data
      textSize(15);
      text("Toggle Comparison",width/2 -70,55);
    }
-
  }
   void line_graph_borders()
  {
@@ -55,6 +55,7 @@ class Graph extends Data
  
  void graph_circles()
  {
+   //graph.data_sort();
    j = 1;
    k = 143;
    for(int i = 0; i < value_array.length -1; i++)
@@ -79,6 +80,7 @@ class Graph extends Data
  }
    void alt_line_draw()
    {  
+     //graph.data_sort();
      k = 0;
      j = 1;
      stroke(255);
@@ -99,6 +101,7 @@ class Graph extends Data
    }
    void alt_graph_circles()
    {
+     //graph.data_sort();
      j = 1;
      k = 143;
      for(int i = 0; i < value_array.length -1; i++)
@@ -159,10 +162,10 @@ class Graph extends Data
      k = 0;
      j = 1;
      stroke(255);
-     for(int i = 143; i <= murder_numbers.length - 1; i++)
+     for(int i = 143; i < murder_numbers.length; i++)
      {
-       value = map(murder_numbers[i-1],0,murder_numbers[143],0,graph_height);
-       value2 = map(murder_numbers[i],0,murder_numbers[143],0,graph_height);
+       value = map(murder_numbers[i-1],0,murder_numbers[142],0,graph_height);
+       value2 = map(murder_numbers[i],0,murder_numbers[142],0,graph_height);
        line(border+even_space*(j-1),height - border - value,border+even_space*j,height - border - value2);
        value_array[k] = value2;
        j++;
@@ -177,16 +180,16 @@ class Graph extends Data
    void bottom_ten_circles()
    {
        j = 1;
-       k = 10;
-       for(int i = 0; i < value_array.length -1; i++)
+       k = 0;
+       for(int i = 0; i < value_array.length - 1 ; i++)
        {
          if(mouseX > border+(even_space*j)-30 && mouseX < border+(even_space*j)+30 && mouseY > (height - border - value_array[i]) -30 && mouseY < (height - border - value_array[i]) + 30)
           {
            fill(255,20,20);
            stroke(255,20,20);
            ellipse(border+(even_space*j),height - border - value_array[i],13,13);
-           text(murder_nations[k],(border+even_space*j)-5,height - border - value_array[i] + 20);
-           text(murder_numbers[k],(border+even_space*j)-5,height - border - value_array[i] + 40);
+           text(murder_nations[143+k],(border+even_space*j)-5,height - border - value_array[i] + 20);
+           text(murder_numbers[143+k],(border+even_space*j)-5,height - border - value_array[i] + 40);
           }
          else
           {
@@ -195,7 +198,7 @@ class Graph extends Data
            ellipse(border+(even_space*j),height - border - value_array[i],13,13);
           }
          j++;
-         k--;
+         k++;
        }
    }
    void bottom_ten_text()
@@ -206,8 +209,8 @@ class Graph extends Data
        fill(255);
        text(j,(border+even_space*j-1),border + graph_height + 20);
        text("0",border - 10, border+ graph_height + 10);
-       text("100",border - 25, border); 
-       text("50",border - 20, border+ graph_height/2);
+       text("1",border - 25, border); 
+       text("0.5",border - 20, border+ graph_height/2);
        fill(255);
        text("Murders per 100,000",20, border - 30);
        text("Bottom ten countries",width/2,height - 20);
@@ -220,8 +223,8 @@ class Graph extends Data
      stroke(255);
      for(int i = 143; i <= murder_numbers.length - 1; i++)
      {
-       value = map(gdp_numbers[i-1],0,gdp_numbers[143],0,graph_height);
-       value2 = map(gdp_numbers[i],0,gdp_numbers[143],0,graph_height);
+       value = map(gdp_numbers[i-1],0,gdp_numbers[142],0,graph_height);
+       value2 = map(gdp_numbers[i],0,gdp_numbers[142],0,graph_height);
        line(border+even_space*(j-1),height - border - value,border+even_space*j,height - border - value2);
        value_array[k] = value2;
        j++;
@@ -236,16 +239,16 @@ class Graph extends Data
    void alt_bottom_circles()
    {
      j = 1;
-     k = 10;
-     for(int i = 0; i < value_array.length -1; i++)
+     k = 0;
+     for(int i = 0; i < value_array.length - 1; i++)
      {
        if(mouseX > border+(even_space*j)-30 && mouseX < border+(even_space*j)+30 && mouseY > (height - border - value_array[i]) -30 && mouseY < (height - border - value_array[i]) + 30)
        {
          fill(255,60,60);
          stroke(255,60,60);
          ellipse(border+(even_space*j),height - border - value_array[i],13,13);
-         text(gdp_nations[k],(border+even_space*j)-5,height - border - value_array[i] + 20);
-         text("$"+gdp_numbers[k],(border+even_space*j)-5,height - border - value_array[i] + 40);
+         text(gdp_nations[143+k],(border+even_space*j)-5,height - border - value_array[i] + 20);
+         text("$"+gdp_numbers[143+k],(border+even_space*j)-5,height - border - value_array[i] + 40);
        }
        else
        {
@@ -265,8 +268,8 @@ class Graph extends Data
        fill(255);
        text(j,(border+even_space*j-1),border + graph_height + 20);
        text("$0",border - 30, border+ graph_height + 10);
-       text("$150000",border - 50, border); 
-       text("$75000",border - 50, border+ graph_height/2);
+       text("$" + round(gdp_numbers[143]),border - 50, border); 
+       text("$" + round(gdp_numbers[143]/2),border - 50, border+ graph_height/2);
        fill(255);
        text("Annual GDP",20, border - 30);
        text("Bottom ten countries",width/2,height - 20);
